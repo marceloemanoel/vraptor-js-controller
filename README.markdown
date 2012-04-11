@@ -19,13 +19,14 @@ On the `web.xml` of your application insert the following lines:
 
 On the web page you want to use the controller just add the following line:
 
-     
     <script type="text/javascript" src="<c:url value='/js/ControllerName'/>"></script>
     
+to use a minified version of it include the following line:
+
+    <script type="text/javascript" src="<c:url value='/js/min/ControllerName'/>"></script>
 
 For instance suppose that exist a ProductsController than you should insert the following snippet:
 
-    
     <script type="text/javascript" src="<c:url value='/js/ProductsController'/>"></script>
     
 HOW TO USE
@@ -135,6 +136,7 @@ To use eclipse just do the following:
     
 * open eclipse
 * import project to the workspace
+* I use the following [code conventions](https://github.com/marceloemanoel/Code-Conventions), when contributing, please use it.
 
 RUN THE SAMPLE
 --------------
