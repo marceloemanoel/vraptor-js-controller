@@ -1,7 +1,5 @@
 package br.com.vraptor.contrib.jscontroller;
 
-import static br.com.caelum.vraptor.view.Results.status;
-
 import java.io.InputStream;
 
 import org.apache.tools.ant.filters.StringInputStream;
@@ -41,7 +39,7 @@ public class JsController {
   public Download controller(String controllerName){
     Controller controller = discover.find(controllerName);
     if(controller == null){
-      result.use(status()).notFound();
+      result.notFound();
       return null;
     }
     InputStream inputStream = new StringInputStream(generator.generate(controller));
@@ -54,7 +52,7 @@ public class JsController {
   public Download minifiedController(String controllerName){
     Controller controller = discover.find(controllerName);
     if(controller == null){
-      result.use(status()).notFound();
+      result.notFound();
       return null;
     }
     InputStream inputStream = new StringInputStream(new MinifiedJsGenerator(generator).generate(controller));
