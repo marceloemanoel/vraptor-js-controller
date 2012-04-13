@@ -1,6 +1,5 @@
 package br.com.vraptor.contrib.jscontroller;
 
-import java.io.IOException;
 import java.io.StringWriter;
 
 import org.apache.velocity.Template;
@@ -37,7 +36,7 @@ public class VelocityJsGenerator implements JsGenerator{
       writer.close();
       return writer.toString();
     }
-    catch (IOException e) {
+    catch (Exception e) {
       throw new GenerateException(e);
     }
   }

@@ -15,22 +15,15 @@ public class MinifiedJsGenerator implements JsGenerator {
   
   @Override
   public String generate(Controller controller) {
-    String js = generator.generate(controller);
+    String javascriptCode = generator.generate(controller);
     
     Compiler compiler = new Compiler();
     CompilerOptions options = new CompilerOptions();
-    // Advanced mode is used here, but additional options could be set, too.
     CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel(options);
 
-    // The dummy input name "input.js" is used here so that any warnings or
-    // errors will cite line numbers in terms of input.js.
-    JSSourceFile input = JSSourceFile.fromCode("input.js", js);
-
-    // compile() returns a Result, but it is not needed here.
+    JSSourceFile input = JSSourceFile.fromCode("input.js", javascriptCode);
     compiler.compile(JSSourceFile.fromCode("externs.js",""), input, options);
-
-    // The compiler is responsible for generating the compiled code; it is not
-    // accessible via the Result.
+    
     return compiler.toSource();
   }
   
