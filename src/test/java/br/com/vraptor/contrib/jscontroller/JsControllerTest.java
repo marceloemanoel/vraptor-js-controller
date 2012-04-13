@@ -4,19 +4,14 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import static br.com.vraptor.contrib.jscontroller.fixtures.Controllers.*;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.zip.GZIPOutputStream;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.mock.web.DelegatingServletOutputStream;
+import org.springframework.mock.web.MockHttpServletResponse;
 
 import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.util.test.MockResult;
@@ -48,8 +43,15 @@ public class JsControllerTest {
     controller.controller("inexistentController");
     verify(result).notFound();
   }
+
+  @Test public void
+  whenTheControllerIsNotFound__theMinifiedJsControllerShouldReturnAHttp404(){
+    result = mock(MockResult.class);
+    controller = new JsController(result, discover, generator);
+    controller.minifiedController("inexistentController");
+    verify(result).notFound();
+  }
   
-  @Ignore("Not yet completed")
   @Test public void
   whenTheControllerisFound_thenJsControllerShouldReturnADownloadToTheGeneratedResource() throws IOException{
     generator = new VelocityJsGenerator();
@@ -58,23 +60,42 @@ public class JsControllerTest {
     
     Download jsResource = controller.controller("ProductsController");
     
-    ByteArrayOutputStream targetStream = new ByteArrayOutputStream();
-
-    HttpServletResponse mockResponse = mock(HttpServletResponse.class);
-    ServletOutputStream out = new DelegatingServletOutputStream(targetStream);
-    when(mockResponse.getOutputStream()).thenReturn(out);
+    MockHttpServletResponse response = new MockHttpServletResponse();
     
     try {
-      jsResource.write(mockResponse);
+      jsResource.write(response);
     }
     catch (IOException e) {
       fail("Cant write to the mock response!");
     }
     
-    assertEquals("text/javascript; charset=UTF-8", mockResponse.getContentType());
-    assertTrue(mockResponse.containsHeader("Content-disposition"));
-    assertTrue(mockResponse.containsHeader("Content-Length"));
+    assertEquals("text/javascript; charset=UTF-8", response.getContentType());
+    assertEquals("inline; filename=ProductsController.js", response.getHeader("Content-disposition"));
+    assertEquals(generator.generate(productsController()).length() + "", response.getHeader("Content-Length"));
+  }
   
+  @Test public void
+  whenTheControllerIsFound_thenMinifiedJsControllerShouldReturnADownloadToTheGenerateResource() {
+    generator = new MinifiedJsGenerator(new VelocityJsGenerator());
+    controller = new JsController(result, discover, generator);
+    when(discover.find(anyString())).thenReturn(productsController());
+    
+    Download jsResource = controller.minifiedController("ProductsController");
+    
+    MockHttpServletResponse response = new MockHttpServletResponse();
+    
+    try {
+      jsResource.write(response);
+    }
+    catch (IOException e) {
+      fail("Cant write to the mock response!");
+    }
+    
+    int generatedLength = generator.generate(productsController()).length();
+
+    assertEquals("text/javascript; charset=UTF-8", response.getContentType());
+    assertEquals("inline; filename=ProductsController-min.js", response.getHeader("Content-disposition"));
+    assertEquals(generatedLength + "", response.getHeader("Content-Length"));
   }
   
 }

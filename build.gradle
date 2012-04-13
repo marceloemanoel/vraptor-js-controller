@@ -6,7 +6,28 @@ repositories{
   mavenRepo url: "http://maven.ow2.org/maven2/"
 }
 
+def springModules = [
+  "spring-core",
+  "spring-context",
+  "spring-context-support",
+  "spring-aop",
+  "spring-aspects",
+  "spring-tx",
+  "spring-beans",
+  "spring-expression",
+  "spring-jdbc",
+  "spring-orm",
+  "spring-oxm",
+  "spring-web",
+  "spring-asm",
+  "spring-test"
+]
+
+
 dependencies {
+  springModules.each {
+    compile group:"org.springframework",   name: it, version:"3.1.0.RELEASE"
+  }
   compile     group:"br.com.caelum"      , name: "vraptor" ,    version: "3.4.0"
   compile     group:"org.apache.velocity", name: "velocity",    version: "1.7"
   compile     group:"com.google.javascript",name:"closure-compiler", version:"r1810"

@@ -1,7 +1,5 @@
 package br.com.vraptor.contrib.jscontroller;
 
-import java.io.InputStream;
-
 import org.apache.tools.ant.filters.StringInputStream;
 
 import br.com.caelum.vraptor.Get;
@@ -42,21 +40,23 @@ public class JsController {
       result.notFound();
       return null;
     }
-    InputStream inputStream = new StringInputStream(generator.generate(controller));
-    String fileName = controller.getName()+JS_EXTENSION;
-    return new InputStreamDownload(inputStream, CONTENT_TYPE, fileName);
+    return download(generator.generate(controller), controller.getName()+JS_EXTENSION);
+  }
+
+  private Download download(String javascript, String fileName) {
+    StringInputStream inputstream = new StringInputStream(javascript);
+    return new InputStreamDownload(inputstream, CONTENT_TYPE, fileName, false, javascript.length());
   } 
   
   @Get
-  @Path("min/{controllerName}")
+  @Path("/min/{controllerName}")
   public Download minifiedController(String controllerName){
     Controller controller = discover.find(controllerName);
     if(controller == null){
       result.notFound();
       return null;
     }
-    InputStream inputStream = new StringInputStream(new MinifiedJsGenerator(generator).generate(controller));
-    String fileName = controller.getName()+MINIFIED_JS_EXTENSION;
-    return new InputStreamDownload(inputStream, CONTENT_TYPE, fileName);
+    MinifiedJsGenerator minifiedJsGenerator = new MinifiedJsGenerator(generator);
+    return download(minifiedJsGenerator.generate(controller), controller.getName()+MINIFIED_JS_EXTENSION);
   }
 }
