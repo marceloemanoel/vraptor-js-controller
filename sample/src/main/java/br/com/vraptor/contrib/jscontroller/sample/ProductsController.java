@@ -38,6 +38,12 @@ public class ProductsController {
     result.use(json()).withoutRoot().from(products.select(id)).recursive().serialize();
   }
   
+  @Get
+  @Path("/new")
+  public void newProduct(){
+    
+  }
+  
   @Post
   @Path("/new")
   public void newProduct(Product product){
