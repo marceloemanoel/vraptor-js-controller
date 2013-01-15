@@ -1,4 +1,4 @@
-package br.com.vraptor.contrib.jscontroller;
+package br.com.vraptor.contrib.jscontroller.web;
 
 import org.apache.tools.ant.filters.StringInputStream;
 
@@ -8,6 +8,10 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.interceptor.download.InputStreamDownload;
+import br.com.vraptor.contrib.jscontroller.Controller;
+import br.com.vraptor.contrib.jscontroller.JsGenerator;
+import br.com.vraptor.contrib.jscontroller.generators.MinifiedJsGenerator;
+import br.com.vraptor.contrib.jscontroller.vraptor.VRaptorControllerDiscover;
 
 /**
  * This controller generates all the javascript needed to use the other controllers via javascript.
@@ -23,10 +27,10 @@ public class JsController {
   private static final String CONTENT_TYPE = "text/javascript; charset=UTF-8";
   
   private Result result;
-  private ControllerDiscover discover;
+  private VRaptorControllerDiscover discover;
   private JsGenerator generator;
   
-  public JsController(Result result, ControllerDiscover discover, JsGenerator generator) {
+  public JsController(Result result, VRaptorControllerDiscover discover, JsGenerator generator) {
     this.result = result;
     this.discover = discover;
     this.generator = generator;
