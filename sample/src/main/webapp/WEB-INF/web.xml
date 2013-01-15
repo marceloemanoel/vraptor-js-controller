@@ -55,9 +55,4 @@
         <param-name>br.com.caelum.vraptor.interceptor.multipart.UPLOAD_SIZE_LIMIT</param-name>
         <param-value>2097152</param-value>
     </context-param>
-    
-    <context-param>
-        <param-name>br.com.caelum.vraptor.packages</param-name>
-        <param-value>br.com.vraptor.contrib.jscontroller</param-value>
-    </context-param>
 </web-app>
