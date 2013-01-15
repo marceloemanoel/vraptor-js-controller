@@ -15,13 +15,17 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.util.test.MockResult;
+import br.com.vraptor.contrib.jscontroller.generators.MinifiedJsGenerator;
+import br.com.vraptor.contrib.jscontroller.generators.VelocityJsGenerator;
+import br.com.vraptor.contrib.jscontroller.vraptor.VRaptorControllerDiscover;
+import br.com.vraptor.contrib.jscontroller.web.JsController;
 
 public class JsControllerTest {
   
   private JsController controller;
   private MockResult result;
   @Mock private JsGenerator generator;
-  @Mock private ControllerDiscover discover;
+  @Mock private VRaptorControllerDiscover discover;
   
   @Before
   public void setUp() throws Exception {

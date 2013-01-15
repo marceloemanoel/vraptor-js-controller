@@ -20,18 +20,20 @@ import br.com.caelum.vraptor.http.route.Route;
 import br.com.caelum.vraptor.http.route.RoutesParser;
 import br.com.caelum.vraptor.resource.HttpMethod;
 import br.com.caelum.vraptor.resource.ResourceClass;
+import br.com.vraptor.contrib.jscontroller.vraptor.VRaptorControllerDiscover;
+import br.com.vraptor.contrib.jscontroller.web.JsController;
 
 public class ControllerDiscoverTest {
   
   @Mock private ServletContext context;
   @Mock private RoutesParser routesParser;
-  private ControllerDiscover discover;
+  private VRaptorControllerDiscover discover;
   
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
     
-    discover = new ControllerDiscover(routesParser, context);
+    discover = new VRaptorControllerDiscover(routesParser, context);
   }
   
   @Test public void 
