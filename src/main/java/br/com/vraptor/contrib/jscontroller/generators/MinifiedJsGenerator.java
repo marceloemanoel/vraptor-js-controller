@@ -1,4 +1,7 @@
-package br.com.vraptor.contrib.jscontroller;
+package br.com.vraptor.contrib.jscontroller.generators;
+
+import br.com.vraptor.contrib.jscontroller.Controller;
+import br.com.vraptor.contrib.jscontroller.JsGenerator;
 
 import com.google.javascript.jscomp.CompilationLevel;
 import com.google.javascript.jscomp.Compiler;

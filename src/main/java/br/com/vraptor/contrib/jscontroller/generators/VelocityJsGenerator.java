@@ -1,4 +1,4 @@
-package br.com.vraptor.contrib.jscontroller;
+package br.com.vraptor.contrib.jscontroller.generators;
 
 import java.io.StringWriter;
 
@@ -10,6 +10,9 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.RequestScoped;
+import br.com.vraptor.contrib.jscontroller.Controller;
+import br.com.vraptor.contrib.jscontroller.GenerateException;
+import br.com.vraptor.contrib.jscontroller.JsGenerator;
 
 @Component
 @RequestScoped
