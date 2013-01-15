@@ -1,39 +1,74 @@
 VRAPTOR-JS-CONTROLLER
 ======================
 
-The plugin main idea is to help the communication of ajax clients with vraptor.
-The plugin depends on jQuery to do ajax communication for the moment.
+The plugin's main idea is to help the interaction between ajax clients and vraptor.
+As for now, it depends on jQuery to do ajax communication.
 
 INSTALATION
 -----------
-Put the `vraptor-js-controller.jar` on the `WEB-INF/lib` of your project.
 
-On the `web.xml` of your application insert the following lines:
+The plugin is self contained and doesn't require any special configuration on your project.
+Just put the jar in your classpath and all should be ready to go. If you use dependency management
+systems like Maven or Gradle you're just a few lines from joy!
 
-     <context-param>
-             <param-name>br.com.caelum.vraptor.packages</param-name>
-             <param-value>
-                 br.com.vraptor.contrib.jscontroller
-             </param-value>
-     </context-param>
+Maven Dependecy
+----------------
+
+Add the following to your `pom.xml`:
+
+```xml
+  <dependency>
+    <groupId>com.github.marceloemanoel</groupId>
+    <artifactId>vraptor-js-controller</artifactId>
+    <version>0.2</version>
+  </dependency>
+```
+
+Gradle Dependency
+-----------------
+
+As shown below, just add the these lines to your `build.gradle` file:
+
+```groovy
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    compile "com.github.marceloemanoel:vraptor-js-controller:0.2"
+  }
+```
+
+As for last, but not the least, you can always build the project from source and
+add `vraptor-js-controller.jar` file on your `WEB-INF/lib` folder.  Instructions on
+how to build the project are listed bellow.
 
 On the web page you want to use the controller just add the following line:
 
+```html
     <script type="text/javascript" src="<c:url value='/js/ControllerName'/>"></script>
-    
+```
+
 to use a minified version of it include the following line:
 
+```html
     <script type="text/javascript" src="<c:url value='/js/min/ControllerName'/>"></script>
+```
 
 For instance suppose that exist a ProductsController than you should insert the following snippet:
 
+```html
     <script type="text/javascript" src="<c:url value='/js/ProductsController'/>"></script>
-    
-HOW TO USE
+```
+
+Usage
 ----------
 
 Suppose you have the following controller on your application: 
 
+```java
+    //package and imports ommited..
+    
     @Resource
     @Path("products")
     public class ProductsController {
@@ -85,16 +120,21 @@ Suppose you have the following controller on your application:
       }
     }
 
+```
+
 Given that controller your client code could be something like this:
 
 `index.jsp`:
 
 include the js controller:
 
+```html
      <script type="text/javascript" src="<c:url value='/js/ProductsController'/>"></script>
+```
      
 and then create another script block with client code:
 
+```html
     <script type="text/javascript">
         var controller = ProductsController();    
         controller.list({
@@ -107,6 +147,7 @@ and then create another script block with client code:
                 }
         });
     </script>
+```
 
 All js controller methods can receive an object with the following properties:
 
