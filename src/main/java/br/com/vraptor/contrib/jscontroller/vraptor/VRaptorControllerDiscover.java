@@ -1,4 +1,4 @@
-package br.com.vraptor.contrib.jscontroller;
+package br.com.vraptor.contrib.jscontroller.vraptor;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -15,6 +15,8 @@ import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.StereotypeHandler;
 import br.com.caelum.vraptor.resource.DefaultResourceClass;
+import br.com.vraptor.contrib.jscontroller.Controller;
+import br.com.vraptor.contrib.jscontroller.JsRoute;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -27,13 +29,13 @@ import com.google.common.collect.Maps;
  */
 @Component
 @ApplicationScoped
-public class ControllerDiscover implements StereotypeHandler {
+public class VRaptorControllerDiscover implements StereotypeHandler {
   
   private Map<String, Controller> controllers;
   private RoutesParser routesParser;
   private ServletContext context;
   
-  public ControllerDiscover(RoutesParser routesParser, ServletContext context) {
+  public VRaptorControllerDiscover(RoutesParser routesParser, ServletContext context) {
     controllers = Maps.newHashMap();
     this.routesParser = routesParser;
     this.context = context;
