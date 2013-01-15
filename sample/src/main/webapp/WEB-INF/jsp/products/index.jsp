@@ -7,8 +7,8 @@
 				<input type="button" id="carregar" value="Carregar">
 				<br>
 				<form id="novoProduto" action="novoProduto" method="get">
-				  descrição: <input type="text" name="product.description"> <br>
-				  preço: <input type="text" name="product.price">
+				  descriÃ§Ã£o: <input type="text" name="product.description"> <br>
+				  preÃ§o: <input type="text" name="product.price">
 				</form>
 				<input type="button" id="inserir" value="Inserir">
 				<input type="button" id="atualizar" value="Atualizar">
