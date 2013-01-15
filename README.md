@@ -1,10 +1,10 @@
-VRAPTOR-JS-CONTROLLER
+VRAPTOR-JS-CONTROLLER [![Build Status](https://travis-ci.org/marceloemanoel/vraptor-js-controller.png)](https://travis-ci.org/marceloemanoel/vraptor-js-controller)
 ======================
 
 The plugin's main idea is to help the interaction between ajax clients and vraptor.
 As for now, it depends on jQuery to do ajax communication.
 
-INSTALATION
+Instalation
 -----------
 
 The plugin is self contained and doesn't require any special configuration on your project.
@@ -155,8 +155,8 @@ All js controller methods can receive an object with the following properties:
     onError: Callback to treat an unsuccessful result from VRaptor controller
     data: An object with the parâmeters that will be delivered to VRaptor controller
              
-COMPILING FROM SOURCE-CODE
---------------------------
+Compile from source code
+------------------------
 
 * open the command line
 * cd to the root folder
@@ -164,7 +164,7 @@ COMPILING FROM SOURCE-CODE
 
         ./gradlew jar
    
-BUILD WITH ECLIPSE
+Build with Eclipse
 ------------------
 
 To use eclipse just do the following:
@@ -179,7 +179,7 @@ To use eclipse just do the following:
 * import project to the workspace
 * I use the following [code conventions](https://github.com/marceloemanoel/Code-Conventions), when contributing, please use it.
 
-RUN THE SAMPLE
+Run the sample
 --------------
 
 To run the sample code:
@@ -192,7 +192,7 @@ To run the sample code:
         
 It's also possible to run from eclipse WTP.
 
-THANKS
+Thanks!
 ------
 
 To [Caelum](http://www.caelum.com.br/), thank you so much for this great framework! 
