@@ -6,6 +6,8 @@ import static br.com.vraptor.contrib.jscontroller.fixtures.Controllers.*;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +24,7 @@ public class JsControllerTest {
   private MockResult result;
   @Mock private JsGenerator generator;
   @Mock private ControllerDiscover discover;
+  @Mock private ServletContext context;
   
   @Before
   public void setUp() throws Exception {
@@ -29,6 +32,7 @@ public class JsControllerTest {
     
     result = new MockResult();
     controller = new JsController(result, discover, generator);
+    when(context.getInitParameter(anyString())).thenReturn("org.apache.velocity.runtime.log.NullLogSystem");
   }
   
   @Test public void 
@@ -54,7 +58,7 @@ public class JsControllerTest {
   
   @Test public void
   whenTheControllerisFound_thenJsControllerShouldReturnADownloadToTheGeneratedResource() throws IOException{
-    generator = new VelocityJsGenerator();
+    generator = new VelocityJsGenerator(context);
     controller = new JsController(result, discover, generator);
     when(discover.find(anyString())).thenReturn(productsController());
     
@@ -76,7 +80,7 @@ public class JsControllerTest {
   
   @Test public void
   whenTheControllerIsFound_thenMinifiedJsControllerShouldReturnADownloadToTheGenerateResource() {
-    generator = new MinifiedJsGenerator(new VelocityJsGenerator());
+    generator = new MinifiedJsGenerator(new VelocityJsGenerator(context));
     controller = new JsController(result, discover, generator);
     when(discover.find(anyString())).thenReturn(productsController());
     
