@@ -1,4 +1,4 @@
-package br.com.vraptor.contrib.jscontroller;
+package com.github.marceloemanoel.vraptor.jscontroller;
 
 import java.util.EnumSet;
 

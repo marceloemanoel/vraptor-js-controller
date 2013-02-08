@@ -1,8 +1,8 @@
-package br.com.vraptor.contrib.jscontroller;
+package com.github.marceloemanoel.vraptor.jscontroller;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-import static br.com.vraptor.contrib.jscontroller.fixtures.Controllers.*;
+import static com.github.marceloemanoel.vraptor.jscontroller.fixtures.Controllers.*;
 
 import java.io.IOException;
 
@@ -13,12 +13,14 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import com.github.marceloemanoel.vraptor.jscontroller.JsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.MinifiedJsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.VelocityJsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.vraptor.VRaptorControllerDiscover;
+import com.github.marceloemanoel.vraptor.jscontroller.web.JsController;
+
 import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.com.vraptor.contrib.jscontroller.generators.MinifiedJsGenerator;
-import br.com.vraptor.contrib.jscontroller.generators.VelocityJsGenerator;
-import br.com.vraptor.contrib.jscontroller.vraptor.VRaptorControllerDiscover;
-import br.com.vraptor.contrib.jscontroller.web.JsController;
 
 public class JsControllerTest {
   

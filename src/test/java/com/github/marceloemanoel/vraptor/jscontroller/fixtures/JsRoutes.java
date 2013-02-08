@@ -1,9 +1,10 @@
-package br.com.vraptor.contrib.jscontroller.fixtures;
+package com.github.marceloemanoel.vraptor.jscontroller.fixtures;
 
 import static com.google.common.collect.Sets.*;
 
+import com.github.marceloemanoel.vraptor.jscontroller.JsRoute;
+
 import br.com.caelum.vraptor.resource.HttpMethod;
-import br.com.vraptor.contrib.jscontroller.JsRoute;
 
 public class JsRoutes {
   

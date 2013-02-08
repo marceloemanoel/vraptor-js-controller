@@ -1,4 +1,4 @@
-package br.com.vraptor.contrib.jscontroller;
+package com.github.marceloemanoel.vraptor.jscontroller;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -14,14 +14,17 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.github.marceloemanoel.vraptor.jscontroller.Controller;
+import com.github.marceloemanoel.vraptor.jscontroller.JsRoute;
+import com.github.marceloemanoel.vraptor.jscontroller.vraptor.VRaptorControllerDiscover;
+import com.github.marceloemanoel.vraptor.jscontroller.web.JsController;
+
 
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.http.route.Route;
 import br.com.caelum.vraptor.http.route.RoutesParser;
 import br.com.caelum.vraptor.resource.HttpMethod;
 import br.com.caelum.vraptor.resource.ResourceClass;
-import br.com.vraptor.contrib.jscontroller.vraptor.VRaptorControllerDiscover;
-import br.com.vraptor.contrib.jscontroller.web.JsController;
 
 public class ControllerDiscoverTest {
   

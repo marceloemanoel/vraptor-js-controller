@@ -1,4 +1,4 @@
-package br.com.vraptor.contrib.jscontroller.generators;
+package com.github.marceloemanoel.vraptor.jscontroller.generators;
 
 import java.io.StringWriter;
 
@@ -8,17 +8,18 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
+import com.github.marceloemanoel.vraptor.jscontroller.Controller;
+import com.github.marceloemanoel.vraptor.jscontroller.GenerateException;
+import com.github.marceloemanoel.vraptor.jscontroller.JsGenerator;
+
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.RequestScoped;
-import br.com.vraptor.contrib.jscontroller.Controller;
-import br.com.vraptor.contrib.jscontroller.GenerateException;
-import br.com.vraptor.contrib.jscontroller.JsGenerator;
 
 @Component
 @RequestScoped
 public class VelocityJsGenerator implements JsGenerator{
   
-  private static final String TEMPLATE_PATH = "/br/com/vraptor/contrib/jscontroller/template/controller.vtl";
+  private static final String TEMPLATE_PATH = "/com/github/marceloemanoel/vraptor/jscontroller/template/controller.vtl";
   private VelocityEngine engine;
   
   public VelocityJsGenerator() {

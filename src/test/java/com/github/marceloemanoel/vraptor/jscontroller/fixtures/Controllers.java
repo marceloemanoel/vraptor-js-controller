@@ -1,12 +1,12 @@
-package br.com.vraptor.contrib.jscontroller.fixtures;
+package com.github.marceloemanoel.vraptor.jscontroller.fixtures;
 
-import static br.com.vraptor.contrib.jscontroller.fixtures.JsRoutes.*;
+import static com.github.marceloemanoel.vraptor.jscontroller.fixtures.JsRoutes.*;
 
 import java.util.ArrayList;
 
-import br.com.vraptor.contrib.jscontroller.Controller;
-import br.com.vraptor.contrib.jscontroller.JsRoute;
 
+import com.github.marceloemanoel.vraptor.jscontroller.Controller;
+import com.github.marceloemanoel.vraptor.jscontroller.JsRoute;
 import com.google.common.collect.Lists;
 
 public class Controllers {

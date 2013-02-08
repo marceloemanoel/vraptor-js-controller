@@ -1,4 +1,4 @@
-package br.com.vraptor.contrib.jscontroller.vraptor;
+package com.github.marceloemanoel.vraptor.jscontroller.vraptor;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -15,9 +15,9 @@ import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.StereotypeHandler;
 import br.com.caelum.vraptor.resource.DefaultResourceClass;
-import br.com.vraptor.contrib.jscontroller.Controller;
-import br.com.vraptor.contrib.jscontroller.JsRoute;
 
+import com.github.marceloemanoel.vraptor.jscontroller.Controller;
+import com.github.marceloemanoel.vraptor.jscontroller.JsRoute;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 

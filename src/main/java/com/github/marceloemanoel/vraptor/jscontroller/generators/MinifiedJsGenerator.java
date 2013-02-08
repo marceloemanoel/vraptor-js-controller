@@ -1,8 +1,8 @@
-package br.com.vraptor.contrib.jscontroller.generators;
+package com.github.marceloemanoel.vraptor.jscontroller.generators;
 
-import br.com.vraptor.contrib.jscontroller.Controller;
-import br.com.vraptor.contrib.jscontroller.JsGenerator;
 
+import com.github.marceloemanoel.vraptor.jscontroller.Controller;
+import com.github.marceloemanoel.vraptor.jscontroller.JsGenerator;
 import com.google.javascript.jscomp.CompilationLevel;
 import com.google.javascript.jscomp.Compiler;
 import com.google.javascript.jscomp.CompilerOptions;

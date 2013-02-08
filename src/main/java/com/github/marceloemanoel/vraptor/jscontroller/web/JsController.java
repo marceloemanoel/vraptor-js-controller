@@ -1,6 +1,11 @@
-package br.com.vraptor.contrib.jscontroller.web;
+package com.github.marceloemanoel.vraptor.jscontroller.web;
 
 import org.apache.tools.ant.filters.StringInputStream;
+
+import com.github.marceloemanoel.vraptor.jscontroller.Controller;
+import com.github.marceloemanoel.vraptor.jscontroller.JsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.MinifiedJsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.vraptor.VRaptorControllerDiscover;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -8,10 +13,6 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.interceptor.download.InputStreamDownload;
-import br.com.vraptor.contrib.jscontroller.Controller;
-import br.com.vraptor.contrib.jscontroller.JsGenerator;
-import br.com.vraptor.contrib.jscontroller.generators.MinifiedJsGenerator;
-import br.com.vraptor.contrib.jscontroller.vraptor.VRaptorControllerDiscover;
 
 /**
  * This controller generates all the javascript needed to use the other controllers via javascript.
