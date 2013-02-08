@@ -57,6 +57,16 @@
     </context-param>
     
     <context-param>
+        <param-name>jscontroller.velocity.logger</param-name>
+        <param-value>org.apache.velocity.runtime.log.NullLogSystem</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>jscontroller.velocity.resouce.loader</param-name>
+        <param-value>classpath</param-value>
+    </context-param>
+    
+    <context-param>
         <param-name>br.com.caelum.vraptor.packages</param-name>
         <param-value>br.com.vraptor.contrib.jscontroller</param-value>
     </context-param>
