@@ -2,8 +2,6 @@ package br.com.vraptor.contrib.jscontroller;
 
 import java.io.StringWriter;
 
-import javax.servlet.ServletContext;
-
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -19,17 +17,12 @@ public class VelocityJsGenerator implements JsGenerator{
   
   private static final String TEMPLATE_PATH = "/br/com/vraptor/contrib/jscontroller/template/controller.vtl";
   private VelocityEngine engine;
-  private String logger;
   
-  public VelocityJsGenerator(ServletContext context) {
+  public VelocityJsGenerator(VelocityConfiguration configuration) {
     engine = new VelocityEngine();
-    engine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
+    engine.setProperty(RuntimeConstants.RESOURCE_LOADER, configuration.getParameters().get("resourceLoader")); 
     engine.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-    logger = context.getInitParameter("velocity.logger");
-    if (logger == null){
-      logger = "org.apache.velocity.runtime.log.NullLogSystem";
-    }
-    engine.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS, logger);
+    engine.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS, configuration.getParameters().get("logger"));
     engine.init();
   }
   

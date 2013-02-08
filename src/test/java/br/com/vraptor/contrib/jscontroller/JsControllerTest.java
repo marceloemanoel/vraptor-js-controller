@@ -25,14 +25,15 @@ public class JsControllerTest {
   @Mock private JsGenerator generator;
   @Mock private ControllerDiscover discover;
   @Mock private ServletContext context;
+  private VelocityConfiguration configuration;
   
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
     
     result = new MockResult();
-    controller = new JsController(result, discover, generator);
-    when(context.getInitParameter(anyString())).thenReturn("org.apache.velocity.runtime.log.NullLogSystem");
+    configuration = new VelocityConfiguration(context);
+    controller = new JsController(result, discover, generator);    
   }
   
   @Test public void 
@@ -58,7 +59,7 @@ public class JsControllerTest {
   
   @Test public void
   whenTheControllerisFound_thenJsControllerShouldReturnADownloadToTheGeneratedResource() throws IOException{
-    generator = new VelocityJsGenerator(context);
+    generator = new VelocityJsGenerator(configuration);
     controller = new JsController(result, discover, generator);
     when(discover.find(anyString())).thenReturn(productsController());
     
@@ -80,7 +81,7 @@ public class JsControllerTest {
   
   @Test public void
   whenTheControllerIsFound_thenMinifiedJsControllerShouldReturnADownloadToTheGenerateResource() {
-    generator = new MinifiedJsGenerator(new VelocityJsGenerator(context));
+    generator = new MinifiedJsGenerator(new VelocityJsGenerator(configuration));
     controller = new JsController(result, discover, generator);
     when(discover.find(anyString())).thenReturn(productsController());
     
