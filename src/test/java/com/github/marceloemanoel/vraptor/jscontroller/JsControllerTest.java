@@ -6,6 +6,8 @@ import static com.github.marceloemanoel.vraptor.jscontroller.fixtures.Controller
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,13 +30,16 @@ public class JsControllerTest {
   private MockResult result;
   @Mock private JsGenerator generator;
   @Mock private VRaptorControllerDiscover discover;
+  @Mock private ServletContext context;
+  private VelocityConfiguration configuration;
   
   @Before
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
     
     result = new MockResult();
-    controller = new JsController(result, discover, generator);
+    configuration = new VelocityConfiguration(context);
+    controller = new JsController(result, discover, generator);    
   }
   
   @Test public void 
@@ -60,7 +65,7 @@ public class JsControllerTest {
   
   @Test public void
   whenTheControllerisFound_thenJsControllerShouldReturnADownloadToTheGeneratedResource() throws IOException{
-    generator = new VelocityJsGenerator();
+    generator = new VelocityJsGenerator(configuration);
     controller = new JsController(result, discover, generator);
     when(discover.find(anyString())).thenReturn(productsController());
     
@@ -82,7 +87,7 @@ public class JsControllerTest {
   
   @Test public void
   whenTheControllerIsFound_thenMinifiedJsControllerShouldReturnADownloadToTheGenerateResource() {
-    generator = new MinifiedJsGenerator(new VelocityJsGenerator());
+    generator = new MinifiedJsGenerator(new VelocityJsGenerator(configuration));
     controller = new JsController(result, discover, generator);
     when(discover.find(anyString())).thenReturn(productsController());
     
