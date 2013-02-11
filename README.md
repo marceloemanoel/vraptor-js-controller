@@ -4,7 +4,7 @@ VRAPTOR-JS-CONTROLLER [![Build Status](https://travis-ci.org/marceloemanoel/vrap
 The plugin's main idea is to help the interaction between ajax clients and vraptor.
 As for now, it depends on jQuery to do ajax communication.
 
-Instalation
+Installation
 -----------
 
 The plugin is self contained and doesn't require any special configuration on your project.
