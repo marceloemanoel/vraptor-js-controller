@@ -1,0 +1,3 @@
+[submodule "instrument-store"]
+	path = instrument-store
+	url = git@github.com:marceloemanoel/instrument-store.git
