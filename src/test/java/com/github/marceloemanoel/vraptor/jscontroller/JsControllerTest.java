@@ -15,9 +15,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import com.github.marceloemanoel.vraptor.jscontroller.JsGenerator;
-import com.github.marceloemanoel.vraptor.jscontroller.generators.MinifiedJsGenerator;
-import com.github.marceloemanoel.vraptor.jscontroller.generators.VelocityJsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.JsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.velocity.MinifiedJsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.velocity.VelocityConfiguration;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.velocity.VelocityJsGenerator;
 import com.github.marceloemanoel.vraptor.jscontroller.vraptor.VRaptorControllerDiscover;
 import com.github.marceloemanoel.vraptor.jscontroller.web.JsController;
 

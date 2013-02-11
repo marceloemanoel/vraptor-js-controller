@@ -2,15 +2,11 @@ package com.github.marceloemanoel.vraptor.jscontroller;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockServletContext;
 
-
-import com.google.common.collect.Maps;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.velocity.VelocityConfiguration;
 
 public class VelocityConfigurationTest {
 	
@@ -19,40 +15,35 @@ public class VelocityConfigurationTest {
 	private MockServletContext context;
 	
 	@Before public void setUp(){
-		MockitoAnnotations.initMocks(this);
 		context = new MockServletContext();			
 	}
 	
 	@Test public void
-	whenConfigurationFound_shouldLoadOnParameters(){
+	whenConfigurationFound_shouldLoadParameters(){
 		setUserConfiguredParameters();
 		configuration = new VelocityConfiguration(context);
-		assertEquals(mapWithUserConfiguredParameters(), configuration.getParameters());
+		assertEquals(defaultLoggerClass(), configuration.getLogger());
+		assertEquals("class", configuration.getResourceLoader());
 	}
 	
 	@Test public void
 	whenNoUserConfigurationFound_thenShouldReturnDefaulParameters(){
 		configuration = new VelocityConfiguration(context);
-		assertEquals(mapDefaultParameters(), configuration.getParameters());
+		assertEquals(defaultLoggerClass(), configuration.getLogger());
+        assertEquals(defaultResourceLoader(), configuration.getResourceLoader());
 	}
 
-	private Map<String, String> mapDefaultParameters() {
-		Map<String, String> map = Maps.newHashMap();
-		map.put("logger", "org.apache.velocity.runtime.log.NullLogSystem");
-		map.put("resourceLoader", "classpath");
-		return map;
-	}
+    private String defaultResourceLoader() {
+        return "classpath";
+    }
+
+    private String defaultLoggerClass() {
+        return "org.apache.velocity.runtime.log.NullLogSystem";
+    }
 
 	private void setUserConfiguredParameters() {
-		context.setInitParameter("jscontroller.velocity.logger", "org.apache.velocity.runtime.log.NullLogSystem");
+		context.setInitParameter("jscontroller.velocity.logger", defaultLoggerClass());
 		context.setInitParameter("jscontroller.velocity.resource.loader", "class");
-	}
-
-	private Map<String, String> mapWithUserConfiguredParameters() {
-		Map<String, String> map = Maps.newHashMap();
-		map.put("logger", "org.apache.velocity.runtime.log.NullLogSystem");
-		map.put("resourceLoader", "class");
-		return map;
 	}
 
 }

@@ -3,8 +3,8 @@ package com.github.marceloemanoel.vraptor.jscontroller.web;
 import org.apache.tools.ant.filters.StringInputStream;
 
 import com.github.marceloemanoel.vraptor.jscontroller.Controller;
-import com.github.marceloemanoel.vraptor.jscontroller.JsGenerator;
-import com.github.marceloemanoel.vraptor.jscontroller.generators.MinifiedJsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.JsGenerator;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.velocity.MinifiedJsGenerator;
 import com.github.marceloemanoel.vraptor.jscontroller.vraptor.VRaptorControllerDiscover;
 
 import br.com.caelum.vraptor.Get;

@@ -1,10 +1,6 @@
-package com.github.marceloemanoel.vraptor.jscontroller;
-
-import java.util.Map;
+package com.github.marceloemanoel.vraptor.jscontroller.generators.velocity;
 
 import javax.servlet.ServletContext;
-
-import com.google.common.collect.Maps;
 
 import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
@@ -14,19 +10,12 @@ import br.com.caelum.vraptor.ioc.Component;
 public class VelocityConfiguration {
 		
 	private ServletContext context;
-	private Map<String, String> parameters = Maps.newHashMap();
 	
 	public VelocityConfiguration(ServletContext context){
 		this.context = context;
-		this.loadParameters();
 	}
 
-	private void loadParameters() {
-		parameters.put("logger", getLoggerParameter());
-		parameters.put("resourceLoader", getResourceLoaderParameter());
-	}
-
-	private String getResourceLoaderParameter() {
+	public String getResourceLoader() {
 		String resourceLoader = context.getInitParameter("jscontroller.velocity.resource.loader");
 		if (resourceLoader == null || resourceLoader.equals("")){
 			resourceLoader = DefaultParameters.RESOURCE_LOADER.getValue();
@@ -34,16 +23,11 @@ public class VelocityConfiguration {
 		return resourceLoader;
 	}
 
-	private String getLoggerParameter() {
+	public String getLogger() {
 		String logger = context.getInitParameter("jscontroller.velocity.logger");
 		if (logger == null || logger.equals("")){
 			logger = DefaultParameters.LOGGER.getValue();
 		}
 		return logger;
 	}
-	
-	public Map<String, String> getParameters(){
-		return parameters;
-	}
-
 }

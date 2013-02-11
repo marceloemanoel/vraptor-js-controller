@@ -1,4 +1,4 @@
-package com.github.marceloemanoel.vraptor.jscontroller.generators;
+package com.github.marceloemanoel.vraptor.jscontroller.generators.velocity;
 
 import java.io.StringWriter;
 
@@ -12,9 +12,8 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.RequestScoped;
 
 import com.github.marceloemanoel.vraptor.jscontroller.Controller;
-import com.github.marceloemanoel.vraptor.jscontroller.GenerateException;
-import com.github.marceloemanoel.vraptor.jscontroller.JsGenerator;
-import com.github.marceloemanoel.vraptor.jscontroller.VelocityConfiguration;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.GenerateException;
+import com.github.marceloemanoel.vraptor.jscontroller.generators.JsGenerator;
 
 @Component
 @RequestScoped
@@ -25,9 +24,9 @@ public class VelocityJsGenerator implements JsGenerator{
   
   public VelocityJsGenerator(VelocityConfiguration configuration) {
     engine = new VelocityEngine();
-    engine.setProperty(RuntimeConstants.RESOURCE_LOADER, configuration.getParameters().get("resourceLoader")); 
+    engine.setProperty(RuntimeConstants.RESOURCE_LOADER, configuration.getResourceLoader()); 
     engine.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-    engine.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS, configuration.getParameters().get("logger"));
+    engine.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS, configuration.getLogger());
     engine.init();
   }
   

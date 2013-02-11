@@ -1,4 +1,4 @@
-package com.github.marceloemanoel.vraptor.jscontroller;
+package com.github.marceloemanoel.vraptor.jscontroller.generators;
 
 @SuppressWarnings("serial")
 public class GenerateException extends RuntimeException {
