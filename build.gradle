@@ -7,6 +7,9 @@ group = "com.github.marceloemanoel"
 archivesBaseName="vraptor-js-controller"
 version="0.2"
 
+sourceCompatibility = "1.6"
+targetCompatibility = "1.6"
+
 if(!hasProperty("sonatypeUsername")) {
     ext.sonatypeUsername = ""
 }
