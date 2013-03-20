@@ -1,6 +1,8 @@
 package com.github.marceloemanoel.vraptor.jscontroller;
 
 import java.util.List;
+
+import com.google.common.base.Objects;
 /**
  * This class represents a jsController with all the routes needed to contact vraptor controllers.
  * @author marceloemanoel
@@ -27,40 +29,22 @@ public class Controller {
 
   @Override
   public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((jsRoutes == null) ? 0 : jsRoutes.hashCode());
-    result = prime * result + ((name == null) ? 0 : name.hashCode());
-    return result;
+      return Objects.hashCode(jsRoutes, name);
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    Controller other = (Controller) obj;
-    if (jsRoutes == null) {
-      if (other.jsRoutes != null)
-        return false;
-    }
-    else if (!jsRoutes.equals(other.jsRoutes))
-      return false;
-    if (name == null) {
-      if (other.name != null)
-        return false;
-    }
-    else if (!name.equals(other.name))
-      return false;
-    return true;
+      Controller other = (Controller) obj;
+      return Objects.equal(jsRoutes, other.jsRoutes) &&
+             Objects.equal(name, other.name);
   }
 
   @Override
   public String toString() {
-    return "Controller [name=" + name + ", jsRoutes=" + jsRoutes + "]";
+    return Objects.toStringHelper(this)
+                  .add("name", name)
+                  .add("jsRoutes", jsRoutes)
+                  .toString();
   }
 
 }
