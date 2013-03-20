@@ -5,4 +5,3 @@ jdk:
   - openjdk6
 git:
   submodules: false
-script: gradle check --stacktrace
