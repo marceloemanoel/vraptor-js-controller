@@ -1,4 +1,4 @@
-VRAPTOR-JS-CONTROLLER [![Build Status](https://travis-ci.org/marceloemanoel/vraptor-js-controller.png)](https://travis-ci.org/marceloemanoel/vraptor-js-controller)
+VRAPTOR-JS-CONTROLLER [![Build Status](https://travis-ci.org/marceloemanoel/vraptor-js-controller.png?branch=master,v_02)](https://travis-ci.org/marceloemanoel/vraptor-js-controller)
 ======================
 
 The plugin's main idea is to help the interaction between ajax clients and vraptor.
